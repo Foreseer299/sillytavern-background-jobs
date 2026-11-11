@@ -1,0 +1,7 @@
+#background-jobs-panel { margin: 8px 0; padding: 9px; border: 1px solid var(--SmartThemeBorderColor); border-radius: 6px; }
+#background-jobs-panel summary { cursor: pointer; font-weight: 600; }
+#background-jobs-panel p { margin: 7px 0; }
+#background-jobs-panel .bj-status { white-space: pre-wrap; }
+#background-jobs-panel .bj-job { border-top: 1px solid var(--SmartThemeBorderColor); margin-top: 8px; padding-top: 8px; }
+#background-jobs-panel textarea { width: 100%; min-height: 100px; max-height: 240px; resize: vertical; }
+#background-jobs-panel button { margin: 4px; }
