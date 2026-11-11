@@ -4,7 +4,7 @@ import path from 'node:path';
 
 export const info = {
     id: 'background-jobs', name: 'Background Jobs',
-    description: 'Independent durable background generation for native SillyTavern chat completions.',
+    description: 'Native background generation plugin for SillyTavern.',
 };
 let service;
 export async function init(router) {

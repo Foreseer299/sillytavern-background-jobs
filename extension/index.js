@@ -26,7 +26,7 @@ function status(message, level = null) {
     statusText = message;
     const element = panel?.querySelector('.bj-status');
     if (element) element.textContent = message;
-    if (level && globalThis.toastr?.[level]) globalThis.toastr[level](message, '独立后台生成', { timeOut: 7000, preventDuplicates: true });
+    if (level && globalThis.toastr?.[level]) globalThis.toastr[level](message, '原生后台生成插件', { timeOut: 7000, preventDuplicates: true });
 }
 
 function pendingRequests() {
@@ -202,7 +202,7 @@ window.fetch = async function backgroundJobsFetch(input, init) {
     const reason = eligibility(body);
     if (reason) {
         if (reason === 'tools') status('此请求使用需要浏览器执行的工具，仍由酒馆前台处理；请保持页面打开。', 'info');
-        else status('此请求不在独立后台生成的支持范围，仍由酒馆前台处理。');
+        else status('此请求不在原生后台生成插件的支持范围，仍由酒馆前台处理。');
         return previousFetch(input, init);
     }
     if (new TextEncoder().encode(JSON.stringify({ generate: body, base: { messages: getContext().chat } })).length > 16 * 1024 * 1024) {
@@ -410,15 +410,15 @@ function mount() {
     const container = document.querySelector('#extensions_settings2') ?? document.querySelector('#extensions_settings');
     if (!container) return;
     panel = document.createElement('details'); panel.id = 'background-jobs-panel'; panel.open = true;
-    const summary = document.createElement('summary'); summary.textContent = '独立后台生成';
+    const summary = document.createElement('summary'); summary.textContent = '原生后台生成插件';
     const label = document.createElement('label'); label.className = 'checkbox_label';
     const toggle = document.createElement('input'); toggle.type = 'checkbox'; toggle.checked = Boolean(settings().enabled);
     toggle.addEventListener('change', () => {
         settings().enabled = toggle.checked; gate.clear(); getContext().saveSettingsDebounced();
-        status(toggle.checked ? '已启用。只接管普通单角色主回复；请确认柏宝箱后台接管已关闭。' : '已关闭新任务接管，已受理任务和结果继续保留。');
+        status(toggle.checked ? '已启用。只接管普通单角色主回复；请确认其他后台接管功能已关闭。' : '已关闭新任务接管，已受理任务和结果继续保留。');
     });
-    const text = document.createElement('span'); text.textContent = '启用独立后台生成'; label.append(toggle, text);
-    const note = document.createElement('p'); note.textContent = '请勿与柏宝箱后台生成同时启用。只支持普通单角色单条回复；需要执行工具的请求仍使用酒馆前台。';
+    const text = document.createElement('span'); text.textContent = '启用原生后台生成插件'; label.append(toggle, text);
+    const note = document.createElement('p'); note.textContent = '同一请求只启用一套后台接管功能。只支持普通单角色单条回复；需要执行工具的请求仍使用酒馆前台。';
     const statusElement = document.createElement('p'); statusElement.className = 'bj-status'; statusElement.setAttribute('role', 'status'); statusElement.textContent = statusText;
     const list = document.createElement('div'); list.className = 'bj-jobs';
     panel.append(summary, label, note, statusElement, button('检查并恢复', refresh), list);

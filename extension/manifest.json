@@ -1,12 +1,12 @@
 {
-  "display_name": "独立后台生成",
+  "display_name": "原生后台生成插件",
   "loading_order": 999,
   "requires": [],
   "optional": [],
   "js": "index.js",
   "css": "style.css",
   "author": "Foreseer299",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "homePage": "https://github.com/Foreseer299/sillytavern-background-jobs",
   "auto_update": false
 }

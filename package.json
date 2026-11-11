@@ -1,9 +1,9 @@
 {
   "name": "sillytavern-background-jobs",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "type": "module",
-  "description": "Independent durable background generation plugin pair for SillyTavern",
+  "description": "Native background generation plugin for SillyTavern",
   "scripts": {
     "test": "node --test tests/*.mjs"
   },

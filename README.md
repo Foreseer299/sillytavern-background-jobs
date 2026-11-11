@@ -1,8 +1,8 @@
-# SillyTavern 独立后台生成
+# SillyTavern 原生后台生成插件
 
 在服务器上完成已提交的回复，手机关闭页面后，重新打开同一聊天取回结果。
 
-这是从零编写的前端扩展和服务端插件。没有引用、复制或要求安装柏宝箱、柏宝库、Luker，也不修改它们或 SillyTavern 核心文件。只通过原生聊天事件、保存接口和生成路由适配 SillyTavern。干净实例验收时仅安装本项目的两个目录。
+这是适用于 SillyTavern 的原生后台生成插件，包含前端扩展和服务端组件，通过原生聊天事件、保存接口和生成路由完成后台生成与恢复。
 
 目前验证环境为 **SillyTavern 1.19.0、Node.js 24、Linux ARM64**。原生路由适配会检查结构，其他版本需要重新验收。没有 npm 依赖，也不需要编译前端。
 
@@ -46,7 +46,7 @@ python3 scripts/install.py install --root /path/to/app \
   --extension-root /path/to/extensions/background-jobs --apply
 ```
 
-在酒馆正在使用的 `config.yaml` 中确保 `enableServerPlugins: true`，确认没有进行中的生成任务后，只重启该酒馆进程。刷新浏览器，在扩展设置中打开“独立后台生成”。如果另有后台接管扩展，请关闭其后台接管功能，其他功能可继续保留；不要同时让两套功能接管同一个生成请求。
+在酒馆正在使用的 `config.yaml` 中确保 `enableServerPlugins: true`，确认没有进行中的生成任务后，只重启该酒馆进程。刷新浏览器，在扩展设置中打开“原生后台生成插件”。如果另有后台接管扩展，请关闭其后台接管功能，其他功能可继续保留；不要同时让两套功能接管同一个生成请求。
 
 安装器默认只预览，不改配置、用户资料或其他插件，也不重启服务。遇到已有未知文件会拒绝覆盖。前端默认关闭，需明确启用。任务目录位于各用户自己的数据目录下的 `background-jobs/`，目录权限0700、记录0600，不应发布到公开仓库。
 
@@ -71,5 +71,3 @@ python3 -m unittest discover -s tests -p 'test_*.py' -v
 测试只使用合成数据，不自动请求真实模型。真实 PG、隔离浏览器及生产接口验收结果见 [VALIDATION.md](VALIDATION.md)。
 
 项目代码使用 [MIT 许可证](LICENSE)。依赖安装者已有的 SillyTavern 及其许可；本仓库不附带酒馆源码。集成依据为 [官方服务端插件接口](https://docs.sillytavern.app/for-contributors/server-plugins/)和[官方前端扩展接口](https://docs.sillytavern.app/for-contributors/writing-extensions/)，以及已安装版本的原生接口核验。
-
-之前的[柏宝箱兼容补丁](https://github.com/Foreseer299/sillytavern-background-compat)继续保留。该项目是另一种方案，本独立实现没有导入其代码或补丁。

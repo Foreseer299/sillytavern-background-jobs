@@ -1,4 +1,4 @@
-/** Original, dependency-free state helpers. No third-party extension code. */
+/** State helpers for the native background generation plugin. */
 export const API = '/api/plugins/background-jobs';
 export const MARKER = 'background_job_id';
 const BODY_WRAPPERS = new Set(['output_everything_here', 'game_content', 'emit_complete_response']);
